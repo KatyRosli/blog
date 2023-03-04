@@ -59,7 +59,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link href="/blog">
+            <Link href="/blogs">
                 Blog
             </Link>
           </li>

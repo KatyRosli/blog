@@ -1,6 +1,8 @@
-import Layout from "../components/Layout";
+import Layout from '../components/Layout';
+import Blogs from "../components/Blogs";
+import { fetcher } from '../lib/api';
 
-const BlogList = () => {
+const BlogsList = ({ blogs }) => {
     return (
         <Layout>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
@@ -8,12 +10,22 @@ const BlogList = () => {
                     Blogs
                 </span>
             </h1>
+            <Blogs blogs={blogs} />
         </Layout>
     )
 };
 
-export default BlogList;
+export default BlogsList;
 
-export async function getServerSideProps() {
-    //testing123456
+export async function getStaticProps() {
+    console.log('gooo', process.env.NEXT_PUBLIC_STRAPI_URL);
+    const blogsResponse = await fetcher(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs`
+    );
+    console.log('yaaa', blogsResponse);
+    return {
+        props: {
+            blogs: blogsResponse,
+        },
+    };
 }
