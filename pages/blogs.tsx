@@ -15,5 +15,5 @@ const BlogList = () => {
 export default BlogList;
 
 export async function getServerSideProps() {
-    
+    //testing123
 }
