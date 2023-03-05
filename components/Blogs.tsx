@@ -9,7 +9,7 @@ const Blogs = ({ blogs }) => {
           blogs.data.map((blog: any) => {
             return (
               <li key={blog.id}>
-                <Link href={`blog/` + blog.attributes.title}>
+                <Link href={`blog/` + blog.attributes.title}> {blog.attributes.title} {blog.attributes.blogcontent}
                 </Link>
               </li>
           );
