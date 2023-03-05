@@ -3,10 +3,15 @@ import Blogs from "../components/Blogs";
 import { fetcher } from '../lib/api';
 import useSWR from 'swr';
 import { useState } from 'react';
+import { BlogDataResponse } from '../lib/types';
 
-const BlogsList = ({ blogs }) => {
+type Props = {
+    blogs: BlogDataResponse
+}
+
+const BlogsList = ({ blogs }: Props) => {
     const [pageIndex, setPageIndex] = useState(1);
-    const { data } = useSWR(
+    const { data } = useSWR<BlogDataResponse>(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?pagination[page]=${pageIndex}&pagination[pageSize]=5`, 
         fetcher, 
         {
@@ -54,11 +59,9 @@ const BlogsList = ({ blogs }) => {
 export default BlogsList;
 
 export async function getStaticProps() {
-    console.log('gooo', process.env.NEXT_PUBLIC_STRAPI_URL);
     const blogsResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?pagination[page]=1&pagination[pageSize]=5`
     );
-    console.log('yaaa', blogsResponse);
     return {
         props: {
             blogs: blogsResponse,

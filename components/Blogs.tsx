@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import { BlogDataResponse } from '../lib/types'
 
-const Blogs = ({ blogs }) => {
-    console.log('yoo', blogs);
+type Props = {
+  blogs: BlogDataResponse | undefined
+}
+
+const Blogs = ({ blogs }: Props) => {
   return (
     <>
       <ul className="list-none space-y-4 text-4xl font-bold mb-3">

@@ -1,9 +1,14 @@
 import Layout from '@/components/Layout';
+import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
 import { markdownToHTML, replaceImageUrls } from '../../lib/markdownToHTML';
-import Image from 'next/image';
 
-const Blog = ({ blog, content }) => {
+type Props = {
+    blog: BlogEntry,
+    content: string
+}
+
+const Blog = ({ blog, content }: Props) => {
     return (
         <Layout>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
@@ -24,8 +29,11 @@ const Blog = ({ blog, content }) => {
     )
 }
 
+type ServerSideProps = {
+    params: { slug: string }
+}
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params }: ServerSideProps) {
     const { slug } = params;
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
