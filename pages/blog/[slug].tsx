@@ -1,7 +1,8 @@
 import Layout from '@/components/Layout';
 import { fetcher } from '../../lib/api';
+import markdownToHTML from '../../lib/markdownToHTML';
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, content }) => {
     return (
         <Layout>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
@@ -9,6 +10,18 @@ const Blog = ({ blog }) => {
                 {blog.attributes.title}
                 </span>
             </h1>
+            <p>
+                <span>
+                {blog.attributes.date}
+                </span>
+            </p>
+            <p>
+                <div className='tracking-wide font-normal text-sm' 
+                dangerouslySetInnerHTML={{__html: content}}></div>
+                <span>
+                {blog.attributes.image}
+                </span>
+            </p>
         </Layout>
     )
 }
@@ -19,9 +32,11 @@ export async function getServerSideProps({ params }) {
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
+    const content = await markdownToHTML(blogResponse.data.attributes.content);
     return {
         props: {
-            blog: blogResponse.data
+            blog: blogResponse.data,
+            content,
         }
     }
 }
