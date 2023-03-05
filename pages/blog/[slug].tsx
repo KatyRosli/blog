@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
 import { fetcher } from '../../lib/api';
-import markdownToHTML from '../../lib/markdownToHTML';
+import { markdownToHTML, replaceImageUrls } from '../../lib/markdownToHTML';
+import Image from 'next/image';
 
 const Blog = ({ blog, content }) => {
     return (
@@ -18,9 +19,6 @@ const Blog = ({ blog, content }) => {
             <p>
                 <div className='tracking-wide font-normal text-sm' 
                 dangerouslySetInnerHTML={{__html: content}}></div>
-                <span>
-                {blog.attributes.image}
-                </span>
             </p>
         </Layout>
     )
@@ -32,7 +30,8 @@ export async function getServerSideProps({ params }) {
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
-    const content = await markdownToHTML(blogResponse.data.attributes.content);
+    let content = await markdownToHTML(blogResponse.data.attributes.content);
+    content = replaceImageUrls(content)
     return {
         props: {
             blog: blogResponse.data,
