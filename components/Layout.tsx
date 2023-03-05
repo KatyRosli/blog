@@ -1,7 +1,12 @@
 import Head from 'next/head';
+import { ReactNode } from 'react';
 import Nav from './Nav';
 
-const Layout = ({ children }) => (
+type Props = {
+    children: ReactNode
+}
+
+const Layout = ({ children }: Props) => (
     <>
     <Head>
         <title>Blog Database</title>
