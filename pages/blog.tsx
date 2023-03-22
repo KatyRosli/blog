@@ -22,7 +22,7 @@ const BlogsList = ({ blogs }: Props) => {
         <Layout>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400 py-2">
-                    Blogs
+                    All Blog Post
                 </span>
             </h1>
             <Blogs blogs={data} />
@@ -37,20 +37,20 @@ const BlogsList = ({ blogs }: Props) => {
           {' '}
           Previous
         </button>
+        <span>{`${pageIndex} of ${
+          data && data.meta.pagination.pageCount
+        }`}</span>
         <button
           className={`md:p-2 rounded py-2 text-black text-white p-2 ${
-            pageIndex === (data && data.meta.pagination.pageCount)
+            pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)
               ? 'bg-gray-300'
               : 'bg-blue-400'
           }`}
-          disabled={pageIndex === (data && data.meta.pagination.pageCount)}
+          disabled={pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)}
           onClick={() => setPageIndex(pageIndex + 1)}
         >
           Next
         </button>
-        <span>{`${pageIndex} of ${
-          data && data.meta.pagination.pageCount
-        }`}</span>
       </div>
         </Layout>
     )
@@ -62,6 +62,7 @@ export async function getStaticProps() {
     const blogsResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?pagination[page]=1&pagination[pageSize]=5`
     );
+    console.log('getStaticProps data: ', blogsResponse)
     return {
         props: {
             blogs: blogsResponse,

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
+import Footer from './Footer';
 import Nav from './Nav';
 
 type Props = {
@@ -9,12 +10,12 @@ type Props = {
 const Layout = ({ children }: Props) => (
     <>
     <Head>
-        <title>Blog Database</title>
+        <title>Code With Katy Rosli</title>
     </Head>
     <Nav />
     <main className='px-4'>
         <div
-        className='
+        /* className='
         flex
         justify-center
         items-center
@@ -23,11 +24,12 @@ const Layout = ({ children }: Props) => (
         w-2/4
         rounded-lg
         my-16
-        p-16'
+        p-16' */
         >
             <div className='text-2xl font-medium'>{children}</div>
         </div>
-    </main>
+    </main> 
+    <Footer />
     </>
 );
 export default Layout;

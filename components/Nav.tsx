@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Nav = () => {
+  const openInNewTab = (url:string) => {
+    window.open(url, '_blank', 'noreferrer');
+  };
     return (
         <nav
         className='
@@ -16,31 +18,10 @@ const Nav = () => {
         bg-white'
         >
             <div>
-                <Link href='/' passHref>
-                        <Image
-                        className='m-3'
-                        src='/strapi-logo.png'
-                        width={200}
-                        height={50}
-                        alt='Strapi Logo'
-                        />
+                <Link href='/'>
+                        Katy
                 </Link>
             </div>
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            id="menu-button"
-            className="h-6 w-6 cursor-pointer md:hidden block"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            >
-            <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
-            />
-        </svg>
         <div
         className="hidden w-full md:flex md:items-center md:w-auto"
         id="menu"
@@ -54,14 +35,17 @@ const Nav = () => {
               md:pt-0 space-x-2"
         >
           <li>
-            <Link href="/">
-                Home
+            <Link href='/blog'>
+                Blog
             </Link>
           </li>
           <li>
-            <Link href="/blogs">
-                Blog
+            <Link href='/about'>
+                About
             </Link>
+          </li>
+          <li>
+            <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'>Portfolio</a>
           </li>
         </ul>
         </div>
