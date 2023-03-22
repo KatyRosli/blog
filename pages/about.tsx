@@ -13,8 +13,8 @@ export default function About() {
         husband and my son.</p>
         <h3>Education</h3>
         <p>I have a BA Hons in Communication Design from The Glasgow School of Art. I have more 
-        than 6 years of experience as a UX/UI Designer. I progress my career as a Frontend 
-        Developer after completing a FullStack JavaScript Developer bootcamp from SALT 
+        than 6 years of experience as a UX/UI Designer. I’m currently working as a Frontend 
+        Developer after completing a FullStack JavaScript Developer a career program from SALT 
         (School of Applied Technology).</p>
         <h3>Experiences</h3>
         <p>Over the years, I have worked for large organisations to start ups. 
