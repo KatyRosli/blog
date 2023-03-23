@@ -1,55 +1,67 @@
 import Link from 'next/link';
+import { useState } from 'react';
+import { BsList, BsXLg } from 'react-icons/bs';
 
 const Nav = () => {
+  const [nav, setNav] = useState(false);
   const openInNewTab = (url:string) => {
     window.open(url, '_blank', 'noreferrer');
   };
     return (
-        <nav
-        className='
-        flex flex-wrap
-        items-center
-        justify-between
-        w-full
-        py-4
-        md:py-0
-        px-4
-        text-lg text-gray-700
-        bg-white'
-        >
-            <div>
+      <div>
+        <nav className='w-full bg-black fixed top-0 left-0 right-0 z-10'>  
+        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <div>
+          <div className='flex items-center justify-between py-3 md:py-5 md:block'>
+                {/* LOGO */}
                 <Link href='/'>
-                        Katy
+                  <h4 className='text-2xl text-cyan-600 font-bold'>Katy</h4>
                 </Link>
-            </div>
-        <div
-        className="hidden w-full md:flex md:items-center md:w-auto"
-        id="menu"
-      >
-        <ul
-          className="
-              pt-4
-              text-base text-gray-700
-              md:flex
-              md:justify-between 
-              md:pt-0 space-x-2"
+            {/* HAMBURGER BUTTON FOR MOBILE */}
+            <div className="md:hidden">
+                <button
+                  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                  onClick={() => setNav(!nav)}
+                >
+                  {nav ? (
+                    <BsXLg />
+                  ) : (
+                    <BsList />
+                  )}
+                </button>
+                </div>
+                </div>
+              </div>
+              <div>
+              <div
+              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+                nav ? 'p-12 md:p-0 block' : 'hidden'
+              }`}
+            >
+            <ul
+            className='
+            h-screen md:h-auto items-center justify-center md:flex'
         >
-          <li>
+          <li className='pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent'>
             <Link href='/blog'>
-                Blog
+              <h5>Blog</h5>
             </Link>
           </li>
-          <li>
+          <li className='pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent'>
             <Link href='/about'>
-                About
+              <h5>About</h5>
             </Link>
           </li>
-          <li>
-            <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'>Portfolio</a>
+          <li className='pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent'>
+            <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'>
+              <h5>Portfolio</h5></a>
           </li>
         </ul>
         </div>
+        </div>
+        </div>
         </nav>
+        </div>
     )
 };
 export default Nav;
