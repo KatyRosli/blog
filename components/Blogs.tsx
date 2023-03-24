@@ -13,9 +13,11 @@ const Blogs = ({ blogs }: Props) => {
           blogs.data.map((blog: any) => {
             return (
               <li key={blog.id}>
-                <Link href={`blog/` + blog.attributes.slug}> 
+                <Link className='text-xl hover:text-violet-700' href={`blog/` + blog.attributes.slug}> 
                   {blog.attributes.title}
+                  {blog.attributes.description}
                 </Link>
+                <p className='text-sm'>{blog.attributes.date}</p>
               </li>
           );
           })}

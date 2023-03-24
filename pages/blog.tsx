@@ -20,7 +20,7 @@ const BlogsList = ({ blogs }: Props) => {
     );
     return (
         <Layout>
-          <div>
+          <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <p className="font-bold text-5xl mb-16">All Blog Post</p>
             <Blogs blogs={data} />
             <div className="space-x-2 space-y-2">
