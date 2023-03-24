@@ -5,9 +5,9 @@ const Footer = () => {
         window.open(url, '_blank', 'noreferrer');
     };
     return (
-        <footer className='bg-neutral-100 dark:bg-stone-900 w-full fixed bottom-0 p-4'>
+        <footer className='bg-neutral-100 dark:bg-stone-900 w-full bottom-0 p-4 mt-24'>
         <div className="w-full md:flex md:w-auto">
-        <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:flex md:px-8">
+        <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:flex md:px-16">
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
           <button><BsLinkedin onClick={() => openInNewTab('https://www.linkedin.com/in/katy-rosli-761b70185/')} /></button>
           </li>
@@ -22,8 +22,8 @@ const Footer = () => {
           </li>
         </ul>
         </div>
-        <div className='justify-center mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
-            <p>© 2023 Katy Rosli</p>
+        <div className='justify-center mx-auto lg:max-w-7xl md:items-center md:flex md:px-16'>
+            <p className='text-center'>© 2023 Katy Rosli</p>
             </div>
         </footer>
     )

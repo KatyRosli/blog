@@ -13,9 +13,9 @@ const Nav = () => {
   useEffect(() => setMounted(true), [])
   if(!mounted) return null
     return (
-      <div>
-        <nav className='bg-neutral-100 dark:bg-stone-900 w-full fixed top-0 left-0 right-0 z-10'>  
-        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className='mb-24'>
+        <nav className='bg-neutral-100 dark:bg-stone-900 w-full top-0 left-0 right-0 z-10'>  
+        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-16">
         <div>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
             <div className='flex items-center pr-2'>
@@ -31,7 +31,7 @@ const Nav = () => {
             {/* HAMBURGER BUTTON FOR MOBILE */}
             <div className="md:hidden">
                 <button
-                  className="p-2 rounded-md outline-none focus:border-gray-400 focus:border"
+                  className="p-2 rounded-md outline focus:border-gray-400 focus:border"
                   onClick={() => setNav(!nav)}
                 >
                   {nav ? (
