@@ -5,25 +5,25 @@ const Footer = () => {
         window.open(url, '_blank', 'noreferrer');
     };
     return (
-        <footer className='bg-neutral-100 dark:bg-stone-900 w-full fixed bottom-0'>
-        <div className="w-full md:flex md:items-center md:w-auto">
-        <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <footer className='bg-neutral-100 dark:bg-stone-900 w-full fixed bottom-0 p-4'>
+        <div className="w-full md:flex md:w-auto">
+        <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:flex md:px-8">
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
-          <BsLinkedin onClick={() => openInNewTab('https://www.linkedin.com/in/katy-rosli-761b70185/')} />
+          <button><BsLinkedin onClick={() => openInNewTab('https://www.linkedin.com/in/katy-rosli-761b70185/')} /></button>
           </li>
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
-          <BsGithub onClick={() => openInNewTab('https://github.com/KatyRosli')} />
+          <button><BsGithub onClick={() => openInNewTab('https://github.com/KatyRosli')} /></button>
           </li>
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
-          <BsBehance onClick={() => openInNewTab('https://www.behance.net/KatyLii')} />
+          <button><BsBehance onClick={() => openInNewTab('https://www.behance.net/KatyLii')} /></button>
           </li>
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
-          <BsInstagram onClick={() => openInNewTab('https://www.instagram.com/katy.rosli/')} />
+          <button><BsInstagram onClick={() => openInNewTab('https://www.instagram.com/katy.rosli/')} /></button>
           </li>
         </ul>
         </div>
-        <div>
-            <p className='copyrights'>© 2023 Katy Rosli</p>
+        <div className='justify-center mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
+            <p>© 2023 Katy Rosli</p>
             </div>
         </footer>
     )
