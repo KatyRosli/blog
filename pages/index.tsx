@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import Summary from '@/components/Summary';
 
+
 export default function Home() {
   return (
     <Layout>

@@ -5,40 +5,19 @@ const Footer = () => {
         window.open(url, '_blank', 'noreferrer');
     };
     return (
-        <footer
-        className='
-        flex flex-wrap
-        items-center
-        justify-between
-        w-full
-        py-4
-        md:py-0
-        px-4
-        text-lg text-gray-700
-        bg-white'
-        >
-        <div
-        className="hidden w-full md:flex md:items-center md:w-auto"
-        id="menu"
-      >
-        <ul
-          className="
-              pt-4
-              text-base text-gray-700
-              md:flex
-              md:justify-between 
-              md:pt-0 space-x-2"
-        >
-          <li>
+        <footer className='bg-neutral-100 dark:bg-stone-900 w-full fixed bottom-0'>
+        <div className="w-full md:flex md:items-center md:w-auto">
+        <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
           <BsLinkedin onClick={() => openInNewTab('https://www.linkedin.com/in/katy-rosli-761b70185/')} />
           </li>
-          <li>
+          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
           <BsGithub onClick={() => openInNewTab('https://github.com/KatyRosli')} />
           </li>
-          <li>
+          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
           <BsBehance onClick={() => openInNewTab('https://www.behance.net/KatyLii')} />
           </li>
-          <li>
+          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
           <BsInstagram onClick={() => openInNewTab('https://www.instagram.com/katy.rosli/')} />
           </li>
         </ul>
