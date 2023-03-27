@@ -11,20 +11,18 @@ type Props = {
 const Blog = ({ blog, content }: Props) => {
     return (
         <Layout>
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400 py-2">
+            <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
+            <h1 className="font-bold text-5xl mb-4">
                 {blog.attributes.title}
-                </span>
             </h1>
-            <p>
-                <span>
+            <p className='text-sm mb-16'>
                 {blog.attributes.date}
-                </span>
             </p>
             <p>
                 <div className='tracking-wide font-normal text-sm' 
                 dangerouslySetInnerHTML={{__html: content}}></div>
             </p>
+            </div>
         </Layout>
     )
 }

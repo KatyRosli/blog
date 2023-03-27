@@ -23,30 +23,30 @@ const BlogsList = ({ blogs }: Props) => {
           <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <p className="font-bold text-5xl mb-16">All Blog Post</p>
             <Blogs blogs={data} />
-            <div className="space-x-2 space-y-2">
+            <div className="space-x-2 space-y-2 mt-48">
         <button
-          className={`md:p-2 rounded py-2 text-black text-white p-2 ${
+          className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
             pageIndex === 1 ? 'bg-gray-300' : 'bg-blue-400'
           }`}
           disabled={pageIndex === 1}
           onClick={() => setPageIndex(pageIndex - 1)}
         >
           {' '}
-          Previous
+          Previous Page
         </button>
         <span>{`${pageIndex} of ${
           data && data.meta.pagination.pageCount
         }`}</span>
         <button
-          className={`md:p-2 rounded py-2 text-black text-white p-2 ${
+          className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
             pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)
               ? 'bg-gray-300'
-              : 'bg-blue-400'
+              : 'bg-violet-700'
           }`}
           disabled={pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)}
           onClick={() => setPageIndex(pageIndex + 1)}
         >
-          Next
+          Next Page
         </button>
       </div>
       </div>
