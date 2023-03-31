@@ -5,6 +5,7 @@
 p {
     margin-bottom: 16px;
     font-size: 18px;
+    font-weight: 300;
 }
 
 h3 {
@@ -12,10 +13,11 @@ h3 {
 }
 
 ol {
-    list-style: auto;
+    list-style-type: upper-greek;
 }
 
 li {
     margin-bottom: 16px;
     font-size: 18px;
+    font-weight: 300;
 }

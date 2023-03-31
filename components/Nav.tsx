@@ -50,17 +50,17 @@ const Nav = () => {
               }`}
             >
             <ul className='h-screen md:h-auto items-center justify-center md:flex'>
-          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
+          <li className='pb-6 text-xl pt-5 my-0 md:px-6 text-center border-b-2 md:border-b-0 hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
             <Link href='/blog'>
               <h5>Blog</h5>
             </Link>
           </li>
-          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
+          <li className='pb-6 text-xl pt-5 my-0 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
             <Link href='/about'>
               <h5>About</h5>
             </Link>
           </li>
-          <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
+          <li className='pb-6 text-xl pt-5 my-0 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-violet-700  border-violet-700  md:hover:text-violet-700 md:hover:bg-transparent'>
             <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'>
               <h5>Portfolio</h5></a>
           </li>

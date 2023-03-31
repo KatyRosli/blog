@@ -17,7 +17,7 @@ const Blogs = ({ blogs }: Props) => {
                   {blog.attributes.title}
                 </Link>
                 <p className='text-sm'>{blog.attributes.date}</p>
-                <Link className='text-violet-700' href={`blog/` + blog.attributes.slug}>Read More</Link>
+                <Link className='text-violet-700 underline' href={`blog/` + blog.attributes.slug}>Read More</Link>
               </li>
           );
           })}
