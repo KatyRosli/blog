@@ -15,9 +15,9 @@ const Blogs = ({ blogs }: Props) => {
               <li key={blog.id}>
                 <Link className='text-xl hover:text-violet-700' href={`blog/` + blog.attributes.slug}> 
                   {blog.attributes.title}
-                  {blog.attributes.description}
                 </Link>
                 <p className='text-sm'>{blog.attributes.date}</p>
+                <Link className='text-violet-700' href={`blog/` + blog.attributes.slug}>Read More</Link>
               </li>
           );
           })}

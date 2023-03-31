@@ -13,7 +13,7 @@ export default function Home() {
         </div>
         <div className='flex flex-col'>
           <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'><button className="bg-violet-700 hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full mb-8">View Portfolio</button></a>
-          <Link href='/blog'><button className="border-2 border-violet-700 hover:bg-violet-900 hover:text-white text-black dark:text-white font-bold py-2 px-4 rounded-full">Read the Blog</button></Link>
+          <Link href='/blog'><button className="border-2 border-violet-700 hover:bg-violet-900 hover:text-white text-violet-700 font-bold py-2 px-4 rounded-full">Read the Blog</button></Link>
         </div>
       </div>
       <Summary />
