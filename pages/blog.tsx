@@ -4,6 +4,7 @@ import { fetcher } from '../lib/api';
 import useSWR from 'swr';
 import { useState } from 'react';
 import { BlogDataResponse } from '../lib/types';
+import SearchBox from '@/components/Searchbox';
 
 type Props = {
     blogs: BlogDataResponse
@@ -12,7 +13,7 @@ type Props = {
 const BlogsList = ({ blogs }: Props) => {
     const [pageIndex, setPageIndex] = useState(1);
     const { data } = useSWR<BlogDataResponse>(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?pagination[page]=${pageIndex}&pagination[pageSize]=5`, 
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${pageIndex}&pagination[pageSize]=5`, 
         fetcher, 
         {
             fallbackData: blogs,
@@ -22,6 +23,9 @@ const BlogsList = ({ blogs }: Props) => {
         <Layout>
           <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <p className="font-bold text-5xl mb-16">All Blog Post</p>
+            <SearchBox setSearchValue={function (arg0: string): void {
+            throw new Error('Function not implemented.');
+          } } value={undefined} />
             <Blogs blogs={data} />
             <div className="space-x-2 space-y-2 mt-48">
         <button
@@ -58,7 +62,7 @@ export default BlogsList;
 
 export async function getStaticProps() {
     const blogsResponse = await fetcher(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?pagination[page]=1&pagination[pageSize]=5`
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=1&pagination[pageSize]=5`
     );
     console.log('getStaticProps data: ', blogsResponse)
     return {

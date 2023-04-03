@@ -4,6 +4,7 @@ export type BlogDataResponse = {
 }
 export type BlogEntry = {
     attributes: {
+        [x: string]: ReactNode
         id: string,
         title: string, 
         date: string,
