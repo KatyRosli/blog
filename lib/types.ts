@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export type BlogDataResponse = {
     data: [],
     meta: { pagination: { pageCount: number } }
