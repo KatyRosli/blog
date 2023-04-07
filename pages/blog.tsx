@@ -4,7 +4,7 @@ import { fetcher } from '../lib/api';
 import useSWR from 'swr';
 import { useState } from 'react';
 import { BlogDataResponse } from '../lib/types';
-import SearchBox from '@/components/Searchbox';
+import SearchBox from '../components/SearchBox';
 
 type Props = {
     blogs: BlogDataResponse
