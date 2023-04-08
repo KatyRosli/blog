@@ -7,7 +7,7 @@ type Props = {
 }
 
 const Blogs = ({ blogs }: Props) => {
-  console.log('blogimage', process.env.STRAPI_URL );
+  console.log('blogimage', blogs?.data);
   return (
     <>
       <ul className="list-none space-y-4 text-4xl font-bold mb-3">

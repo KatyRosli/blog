@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 
+
 export type BlogDataResponse = {
     data: [],
     meta: { pagination: { pageCount: number } }
@@ -10,6 +11,6 @@ export type BlogEntry = {
         id: string,
         title: string, 
         date: string,
-        slug: string
+        slug: string,
     }
 }
