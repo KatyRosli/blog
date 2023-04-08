@@ -3,8 +3,8 @@
 @import 'tailwindcss/utilities';
 
 p {
-    margin-bottom: 16px;
-    font-size: 18px;
+    margin-bottom: 8px;
+    font-size: 16px;
     font-weight: 300;
 }
 
@@ -17,7 +17,8 @@ ol {
 }
 
 li {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     font-size: 18px;
     font-weight: 300;
 }
+
