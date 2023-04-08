@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import Summary from '@/components/Summary';
 
 export default function About() {
   return (
     <Layout>
       <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
-        <p className='font-bold text-5xl mb-16'>About</p>
-        <p className='mb-16'>I’m a Frontend Developer who is passionate about programming with TypeScript and JavaScript 
-        and creating beautiful and responsive user interfaces. I love to learn and stay up to date 
-        with the latest technologies. Outside of work, I enjoy skiing and kayaking as hobbies. 
-        I live in Stockholm with my family and I’m excited to share my knowledge and insights on my blog.</p>
+      <Summary />
+      <div className='mt-16'>
         <h3>Background</h3>
         <p className='text-base mb-16'>Born in Singapore. Other than Singapore, I have lived in other parts of the world 
         like in Glasgow (Scotland), Toronto (Canada), Malmö (Sweden) and now in Stockholm with my 
@@ -28,6 +26,7 @@ export default function About() {
         <p className='text-base'>Frontend: React Js, Next Js, Vue Js, Redux, jQuery, Bootstrap, Tailwind, React Native.</p>
         <p className='text-base'>Backend: NodeJs, ExpressJs, Axios, Nodemon, REST, GraphQL, MongoDB, PostgresSQL, Strapi.</p>
         <p className='text-base mb-16'>Test: Mocha, Jest.</p>
+        </div>
       </div>
     </Layout>
   )
