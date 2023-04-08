@@ -4,7 +4,7 @@ import { fetcher } from '../lib/api';
 import useSWR from 'swr';
 import { useState } from 'react';
 import { BlogDataResponse } from '../lib/types';
-import SearchBox from '../components/SearchBox';
+// import SearchBox from '../components/SearchBox';
 
 type Props = {
     blogs: BlogDataResponse
@@ -23,9 +23,9 @@ const BlogsList = ({ blogs }: Props) => {
         <Layout>
           <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <p className="font-bold text-5xl mb-16">All Blog Post</p>
-            <SearchBox setSearchValue={function (arg0: string): void {
+            {/* <SearchBox setSearchValue={function (arg0: string): void {
             throw new Error('Function not implemented.');
-          } } value={undefined} />
+          } } value={undefined} /> */}
             <Blogs blogs={data} />
             <div className="space-x-2 space-y-2 mt-48">
         <button
