@@ -1,11 +1,11 @@
 import { ReactNode } from "react"
 
-
 export type BlogDataResponse = {
-    data: [],
+    data: Array<BlogEntry>,
     meta: { pagination: { pageCount: number } }
 }
 export type BlogEntry = {
+    id: string,
     attributes: {
         [x: string]: ReactNode
         id: string,

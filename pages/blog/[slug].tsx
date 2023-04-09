@@ -37,9 +37,7 @@ export async function getServerSideProps({ params }: ServerSideProps) {
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
-    // let content = await markdownToHTML(blogResponse.data.attributes.content);
    let content = blogResponse.data.attributes.content;
-    //content = replaceImageUrls(content)
     return {
         props: {
             blog: blogResponse.data,
