@@ -9,6 +9,12 @@ p {
     font-weight: 300;
 }
 
+pre, code {
+    font-size: 12px;
+    font-weight: 300;
+    overflow-x: scroll;
+}
+
 h3, h6 {
     margin-bottom: 16px;
     margin-top: 64px;

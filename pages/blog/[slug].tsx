@@ -23,7 +23,7 @@ console.log ('next/prev blog', prevBlog, nextBlog);
             <p className='text-sm mb-16'>
                 {blog.attributes.date}
             </p>
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown className='justify-between' rehypePlugins={[rehypeRaw]}>
                 {content}
             </ReactMarkdown>
             <div className='flex justify-between'>
