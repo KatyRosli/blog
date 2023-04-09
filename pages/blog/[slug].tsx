@@ -3,14 +3,17 @@ import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw';
+import Link from 'next/link';
 
 type Props = {
     blog: BlogEntry,
-    content: string
+    content: string,
+    prevBlog?: BlogEntry,
+    nextBlog?: BlogEntry,
 }
 
-const Blog = ({ blog, content }: Props) => {
-
+const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
+console.log ('next/prev blog', prevBlog, nextBlog);
     return (
         <Layout>
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
@@ -23,27 +26,54 @@ const Blog = ({ blog, content }: Props) => {
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                 {content}
             </ReactMarkdown>
+            <div className='flex justify-between'>
+                {prevBlog ? (
+                    <Link href="/blog/[slug]" as={`/blog/${prevBlog.attributes.slug}`}>
+                        <a className='text-blue-500'>Previous Post</a>
+                    </Link>
+                ) : (
+                    <span />
+                )}
+                {nextBlog ? (
+                    <Link href="/blog/[slug]" as={`/blog/${nextBlog.attributes.slug}`}>
+                        <a className='text-blue-500'>Next Post</a>
+                    </Link>
+                ): (
+                    <span />
+                )}
+            </div>
             </div>
         </Layout>
     )
 }
 
 type ServerSideProps = {
-    params: { slug: string }
+    params: {
+        slug: string,
+        prevblog: boolean | undefined,
+        nextblog: boolean | undefined,
+    }
 }
 
 export async function getServerSideProps({ params }: ServerSideProps) {
     const { slug } = params;
+    console.log('params', params)
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
-   let content = blogResponse.data.attributes.content;
+    const currentBlog = blogResponse.data;
+    const prevBlog = params.prevblog !== undefined ? params.prevblog : null;
+    const nextBlog = params.nextblog !== undefined ? params.nextblog : null;
+    const content = currentBlog.attributes.content;
     return {
         props: {
-            blog: blogResponse.data,
+            blog: currentBlog,
             content,
+            prevBlog,
+            nextBlog,
         }
     }
 }
+
 
 export default Blog;

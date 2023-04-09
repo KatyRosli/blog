@@ -23,7 +23,7 @@ const BlogsList = ({ blogs }: Props) => {
           <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <p className="font-bold text-5xl mb-16">All Blog Post</p>
             <Blogs blogs={blogs} />
-            <div className="space-x-2 space-y-2 mt-48">
+            <div className='justify-between md:flex md:px-48 mb-40 mt-32'>
         <button
           className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
             pageIndex === 1 ? 'bg-gray-300' : 'bg-blue-400'
@@ -34,7 +34,7 @@ const BlogsList = ({ blogs }: Props) => {
           {' '}
           Previous Page
         </button>
-        <span>{`${pageIndex} of ${
+        <span className='mx-3.5'>{`${pageIndex} of ${
           data && data.meta.pagination.pageCount
         }`}</span>
         <button
