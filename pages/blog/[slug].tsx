@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
-console.log ('next/prev blog', prevBlog, nextBlog);
+//console.log ('next/prev blog', prevBlog, nextBlog);
     return (
         <Layout>
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
@@ -57,7 +57,7 @@ type ServerSideProps = {
 
 export async function getServerSideProps({ params }: ServerSideProps) {
     const { slug } = params;
-    console.log('params', params)
+    //console.log('params', params)
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
