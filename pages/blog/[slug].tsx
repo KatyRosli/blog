@@ -3,6 +3,7 @@ import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw';
+import rehypeHighlight from 'rehype-highlight'
 import Link from 'next/link';
 
 type Props = {
@@ -23,25 +24,9 @@ const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
             <p className='text-sm mb-16'>
                 {blog.attributes.date}
             </p>
-            <ReactMarkdown className='justify-between' rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown className='justify-between' rehypePlugins={[rehypeRaw, rehypeHighlight]}>
                 {content}
             </ReactMarkdown>
-            <div className='flex justify-between'>
-                {prevBlog ? (
-                    <Link href="/blog/[slug]" as={`/blog/${prevBlog.attributes.slug}`}>
-                        <a className='text-blue-500'>Previous Post</a>
-                    </Link>
-                ) : (
-                    <span />
-                )}
-                {nextBlog ? (
-                    <Link href="/blog/[slug]" as={`/blog/${nextBlog.attributes.slug}`}>
-                        <a className='text-blue-500'>Next Post</a>
-                    </Link>
-                ): (
-                    <span />
-                )}
-            </div>
             </div>
         </Layout>
     )
