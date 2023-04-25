@@ -43,3 +43,19 @@ li {
 hr {
     margin-top: 32px;
 }
+
+.search-input {
+    width: 100%;
+    max-width: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+  
+@media (max-width: 640px) {
+    .search-input {
+      font-size: 1.2rem;
+      width: 100%;
+      max-width: none;
+    }
+  }
+  

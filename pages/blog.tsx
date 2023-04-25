@@ -16,6 +16,12 @@ const BlogsList = ({ blogs }: Props) => {
     const [filteredBlogs, setFilteredBlogs] = useState<BlogDataResponse | undefined>(undefined);
     const [searchValue, setSearchValue] = useState('');
 
+    const sortByDate = ((array: Array<BlogEntry>) => {
+      array?.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
+      array?.reverse();
+      return array;
+    })
+
     const { data } = useSWR<BlogDataResponse>(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${pageIndex}&pagination[pageSize]=5`, 
         fetcher, 
@@ -25,7 +31,7 @@ const BlogsList = ({ blogs }: Props) => {
     );
 
     useEffect(() => {
-      if (searchValue) {
+      if (searchValue && searchValue.length > 0) {
           const filteredBlogs = {
               data: data?.data.filter(blog =>
                   blog.attributes.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -46,12 +52,15 @@ const BlogsList = ({ blogs }: Props) => {
         <Layout>
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
                 <p className="font-bold text-5xl mb-16">All Blog Post</p>
-                <Search value={searchValue} setSearchValue={setSearchValue}/>
+                <Search value={searchValue} setSearchValue={setSearchValue} />
                 {filteredBlogs?.data.length === 0 && (
                   <p className="text-xl text-center my-8">
-                    No results found. Please try another search or
-                    <Link href="/blog">
-                      view all blog posts
+                    No results found. Please try another search.
+                    < br/>
+                    <Link href="/blog" 
+                    className="text-decoration-line: underline"
+                    onClick={() => window.location.reload()}>
+                      Click here to view all blog posts
                     </Link>
                   </p>
                 )}
