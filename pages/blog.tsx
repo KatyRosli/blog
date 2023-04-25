@@ -32,9 +32,13 @@ const BlogsList = ({ blogs }: Props) => {
               ) || [],
               meta: { pagination: { pageCount: 0 }}
           };
+          filteredBlogs.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
+          filteredBlogs.data.reverse();
           setFilteredBlogs(filteredBlogs);
       } else {
-          setFilteredBlogs(data);
+        data?.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
+        data?.data.reverse();
+        setFilteredBlogs(data);
       }
   }, [searchValue, data]);
 
@@ -45,7 +49,7 @@ const BlogsList = ({ blogs }: Props) => {
                 <Search value={searchValue} setSearchValue={setSearchValue}/>
                 {filteredBlogs?.data.length === 0 && (
                   <p className="text-xl text-center my-8">
-                    No results found. Please try aanother search or
+                    No results found. Please try another search or
                     <Link href="/blog">
                       view all blog posts
                     </Link>
