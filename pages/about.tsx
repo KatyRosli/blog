@@ -13,8 +13,8 @@ export default function About() {
         like in Glasgow (Scotland), Toronto (Canada), Malmö (Sweden) and now in Stockholm with my 
         husband and my son.</p>
         <h3>Education</h3>
-        <p className='text-base mb-16'>I have a BA Hons in Communication Design from The Glasgow School of Art. I have more 
-        than 6 years of experience as a UX/UI Designer. I’m currently working as a Frontend 
+        <p className='text-base mb-16'>I have a BA Hons in Communication Design from The Glasgow School of Art. I have over
+        7 years of working experience as a UX/UI Designer. I’m currently working as a Frontend 
         Developer after completing a FullStack JavaScript Developer a career program from SALT 
         (School of Applied Technology).</p>
         <h3>Experiences</h3>
