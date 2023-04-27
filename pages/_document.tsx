@@ -10,7 +10,7 @@ class MyDocument extends Document {
         <link rel='apple-touch-icon'  sizes='192x192' href='logo192.svg' />
         <link rel='apple-touch-icon'  sizes='512x512' href='logo512.svg' />
       </Head>
-      <body>
+      <body className='bg-zinc-100 dark:bg-zinc-900 text-neutral-800 dark:text-neutral-200'>
         <Main />
         <NextScript />
       </body>

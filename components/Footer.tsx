@@ -5,7 +5,7 @@ const Footer = () => {
         window.open(url, '_blank', 'noreferrer');
     };
     return (
-        <footer className='bg-neutral-100 dark:bg-stone-900 w-full bottom-0 p-4 mt-24'>
+        <footer className='bg-violet-50 dark:bg-stone-900 w-full bottom-0 p-4 mt-24'>
         <div className="w-full md:flex md:w-auto">
         <ul className="justify-between px-4 mx-auto lg:max-w-7xl md:flex md:px-16">
           <li className='pb-6 text-xl py-2 md:px-6 text-center border-b-2 md:border-b-0'>
