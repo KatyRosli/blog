@@ -28,7 +28,7 @@ const Blogs = ({ blogs }: Props) => {
                     prevblog: index > 0
                   }
                 }}>Read More</Link>
-                <hr/>
+                <hr />
               </div>
           );
           })}
