@@ -16,14 +16,8 @@ const BlogsList = ({ blogs }: Props) => {
     const [filteredBlogs, setFilteredBlogs] = useState<BlogDataResponse | undefined>(undefined);
     const [searchValue, setSearchValue] = useState('');
 
-    const sortByDate = ((array: Array<BlogEntry>) => {
-      array?.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
-      array?.reverse();
-      return array;
-    })
-
     const { data } = useSWR<BlogDataResponse>(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${currentPageIndex}&pagination[pageSize]=5`, 
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${currentPageIndex}&pagination[pageSize]=5&sort[0]=date%3Adesc`, 
         fetcher, 
         {
             fallbackData: { data: [], meta: { pagination: { pageCount: 0 }}},
@@ -38,12 +32,12 @@ const BlogsList = ({ blogs }: Props) => {
               ) || [],
               meta: { pagination: { pageCount: 0 }}
           };
-          filteredBlogs.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
-          filteredBlogs.data.reverse();
+          //filteredBlogs.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
+          //filteredBlogs.data.reverse();
           setFilteredBlogs(filteredBlogs);
       } else {
-        data?.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
-        data?.data.reverse();
+        //data?.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
+        //data?.data.reverse();
         setFilteredBlogs(data);
       }
   }, [searchValue, data]);
@@ -64,7 +58,7 @@ const BlogsList = ({ blogs }: Props) => {
                     </Link>
                   </p>
                 )}
-                <Blogs blogs={filteredBlogs ?? { data: [], meta: {pagination: { pageCount: 0 }}}} />
+                <Blogs blogs={filteredBlogs ?? { data: [], meta: {pagination: { pageCount: 1 }}}} />
                 <div className='justify-between md:flex md:px-48 mt-32'>
                     <button
                         className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
@@ -100,9 +94,9 @@ export default BlogsList;
 
 export async function getStaticProps() {
   const blogsResponse = await fetcher(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=1&pagination[pageSize]=5`
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=1&pagination[pageSize]=5&sort=date%3Adesc`
   );
-  const blogs = blogsResponse.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date)).reverse();
+  const blogs = blogsResponse.data;
   const latestBlog = blogs[0];
   const pageIndex = Math.ceil((blogs.indexOf(latestBlog) + 1) / 5);
 

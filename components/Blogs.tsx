@@ -6,15 +6,13 @@ type Props = {
 }
 
 const Blogs = ({ blogs }: Props) => {
-  const sortedBlogs = blogs?.data.sort((a: BlogEntry, b: BlogEntry) => {
-    return new Date(b.attributes?.date).getTime() - new Date(a.attributes?.date).getTime();
-  });
+  const blogsData = blogs?.data;
 
   return (
     <>
       <ul className="list-none space-y-4 text-4xl font-bold mb-3">
-        {sortedBlogs &&
-        sortedBlogs.map((blog: BlogEntry, index: number) => {
+        {blogsData &&
+        blogsData.map((blog: BlogEntry, index: number) => {
             return (
               <div key={blog.id}>
                   <Link className='text-xl hover:text-violet-700' href={`blog/` + blog.attributes?.slug}> 
@@ -26,7 +24,7 @@ const Blogs = ({ blogs }: Props) => {
                   pathname: `blog/` + blog.attributes?.slug,
                   query: {
                     slug: blog.attributes?.slug,
-                    nextblog: index < sortedBlogs.length -1,
+                    nextblog: index < blogsData.length -1,
                     prevblog: index > 0
                   }
                 }}>Read More</Link>
