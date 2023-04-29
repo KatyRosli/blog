@@ -23,7 +23,7 @@ export default function About() {
         All of my past experiences can be seen <Link className='text-violet-700 underline' href='https://www.linkedin.com/in/katy-rosli-761b70185/'> here </Link> on my LinkedIn.</p>
         <h3>Skills and Expertise</h3>
         <p className='text-base'>Languages: TypeScript, JavaScript, HTML, CSS, SCSS.</p>
-        <p className='text-base'>Frontend: React Js, Next Js, Vue Js, Redux, jQuery, Bootstrap, Tailwind, React Native.</p>
+        <p className='text-base'>Frontend: React Js, Next Js, Redux, React Native, Vue Js, Angular, jQuery, Bootstrap, Tailwind.</p>
         <p className='text-base'>Backend: NodeJs, ExpressJs, Axios, Nodemon, REST, GraphQL, MongoDB, PostgresSQL, Strapi.</p>
         <p className='text-base mb-16'>Test: Mocha, Jest.</p>
         </div>
