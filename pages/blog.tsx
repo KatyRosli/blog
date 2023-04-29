@@ -12,7 +12,7 @@ type Props = {
 }
 
 const BlogsList = ({ blogs }: Props) => {
-    const [pageIndex, setPageIndex] = useState(1);
+    const [currentPageIndex, setCurrentPageIndex] = useState(1);
     const [filteredBlogs, setFilteredBlogs] = useState<BlogDataResponse | undefined>(undefined);
     const [searchValue, setSearchValue] = useState('');
 
@@ -23,7 +23,7 @@ const BlogsList = ({ blogs }: Props) => {
     })
 
     const { data } = useSWR<BlogDataResponse>(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${pageIndex}&pagination[pageSize]=5`, 
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=${currentPageIndex}&pagination[pageSize]=5`, 
         fetcher, 
         {
             fallbackData: { data: [], meta: { pagination: { pageCount: 0 }}},
@@ -68,25 +68,25 @@ const BlogsList = ({ blogs }: Props) => {
                 <div className='justify-between md:flex md:px-48 mt-32'>
                     <button
                         className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
-                            pageIndex === 1 ? 'bg-gray-300' : 'bg-blue-400'
+                            currentPageIndex === 1 ? 'bg-gray-300' : 'bg-violet-700 text-white'
                         }`}
-                        disabled={pageIndex === 1}
-                        onClick={() => setPageIndex(pageIndex - 1)}
+                        disabled={currentPageIndex === 1}
+                        onClick={() => setCurrentPageIndex(currentPageIndex - 1)}
                     >
                         {' '}
                         Previous
                     </button>
-                    <span className='mx-3.5'>{`${pageIndex} of ${
+                    <span className='mx-3.5'>{`${currentPageIndex} of ${
                         data && data.meta.pagination.pageCount
                     }`}</span>
                     <button
                         className={`border-2 text-black dark:text-white font-bold py-2 px-2 rounded-full ${
-                            pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)
+                            currentPageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)
                                 ? 'bg-gray-300'
-                                : 'bg-violet-700'
+                                : 'bg-violet-700 text-white'
                         }`}
-                        disabled={pageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)}
-                        onClick={() => setPageIndex(pageIndex + 1)}
+                        disabled={currentPageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)}
+                        onClick={() => setCurrentPageIndex(currentPageIndex + 1)}
                     >
                         Next
                     </button>
@@ -102,12 +102,17 @@ export async function getStaticProps() {
   const blogsResponse = await fetcher(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/blogs?populate=*&pagination[page]=1&pagination[pageSize]=5`
   );
-  blogsResponse.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date))
-  blogsResponse.data.reverse()
+  const blogs = blogsResponse.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date)).reverse();
+  const latestBlog = blogs[0];
+  const pageIndex = Math.ceil((blogs.indexOf(latestBlog) + 1) / 5);
 
   return {
       props: {
-          blogs: blogsResponse,
+          blogs: {
+            datae: blogs,
+            meta: { pagination: { pageCount: Math.ceil(blogs.length / 5)}},
       },
+      pageIndex,
+    },
   };
 }
