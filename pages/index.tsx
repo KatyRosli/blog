@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Summary from '@/components/Summary';
 import { NextSeo } from 'next-seo';
 import React from 'react';
+import { ImageUrl } from '@/utils';
 
 export default function Home() {
   return (
@@ -14,6 +15,15 @@ export default function Home() {
         url: 'https://www.codewithkatyrosli.com',
         title: 'Katy Rosli, experienced Frontend Developer | Fullstack Developer',
         description: 'Experienced Frontend Developer | Fullstack Developer',
+        images: [
+          {
+            url: `${ImageUrl('banner.png')}`,
+            width: 1224,
+            height: 724,
+            alt: 'banner',
+            type: 'image/jpeg',
+          },
+        ],
         site_name: 'Code With Katy Rosli',
       }}
       />
