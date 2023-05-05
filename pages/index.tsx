@@ -2,44 +2,18 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import Summary from '@/components/Summary';
 import { NextSeo } from 'next-seo';
-import BannerImage from '../components/assets/Code With Katy Rosli.jpg';
 import React from 'react';
 
 export default function Home() {
-  const [base64Image, setBase64Image] = React.useState<string>('');
-
-  React.useEffect(() => {
-    const image = new Image();
-    image.src = BannerImage.src;
-    image.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = image.width;
-      canvas.height = image.height;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(image, 0, 0);
-      const dataURL = canvas.toDataURL('image/jpeg');
-      setBase64Image(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
-    };
-  }, []);
-
   return (
     <Layout>
       <NextSeo
-      title='Code with Katy Rosli, experienced Frontend Developer | Fullstack Developer'
+      title='codewithkatyrosli.com'
       description='Experienced Frontend Developer | Fullstack Developer'
       openGraph={{
         url: 'https://www.codewithkatyrosli.com',
-        title: 'Experienced Frontend Developer | Fullstack Developer',
+        title: 'Katy Rosli, experienced Frontend Developer | Fullstack Developer',
         description: 'Experienced Frontend Developer | Fullstack Developer',
-        images: [
-          {
-          url: `data:image/jpeg;base64,${base64Image}`,
-          width: 1224,
-          height: 724,
-          alt: 'CodeWithKatyRosliBanner',
-          type: 'image/jpeg',
-          },
-        ],
         site_name: 'Code With Katy Rosli',
       }}
       />
