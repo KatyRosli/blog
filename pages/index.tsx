@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <NextSeo
       title='codewithkatyrosli.com'
-      description='Experienced Frontend Developer | Fullstack Developer'
+      description='Katy Rosli: Experienced Frontend Developer | Fullstack Developer'
       openGraph={{
         url: 'https://www.codewithkatyrosli.com',
         title: 'Katy Rosli, experienced Frontend Developer | Fullstack Developer',

@@ -5,7 +5,7 @@ const Summary = () => {
   return (
     <div className='max-w-7xl w-full lg:max-w-full mx-auto lg:flex border border-gray-400 rounded-md'>
       <div className='h-46'>
-        <Image src={ProfilePhoto} alt='profile photo'/>
+        <Image src={ProfilePhoto} alt='profile photo' priority={true}/>
       </div>
       <div className="p-2 flex flex-col justify-between leading-normal max-w-7xl">
         <p className="text-base mb-0 my-1 ml-2">I’m a Frontend Developer who is passionate about programming with TypeScript and
