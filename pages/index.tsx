@@ -2,35 +2,38 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import Summary from '@/components/Summary';
 import { NextSeo } from 'next-seo';
-import Banner from '../components/assets/Code With Katy Rosli.jpg';
-
-function getBase64Image(image: HTMLImageElement): string {
-  const canvas = document.createElement('canvas');
-  canvas.width = image.width;
-  canvas.height = image.height;
-  const ctx = canvas.getContext('2d')!;
-  ctx.drawImage(image, 0, 0);
-  const dataURL = canvas.toDataURL('image/jpeg');
-  return dataURL.replace(/^data:image\/(png|jpeg);base64,/, '');
-}
+import BannerImage from '../components/assets/Code With Katy Rosli.jpg';
+import React from 'react';
 
 export default function Home() {
-  const image : HTMLImageElement = new Image();
-  image.src = Banner.src;
-  const base64 = getBase64Image(image);
+  const [base64Image, setBase64Image] = React.useState<string>('');
+
+  React.useEffect(() => {
+    const image = new Image();
+    image.src = BannerImage.src;
+    image.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const ctx = canvas.getContext('2d')!;
+      ctx.drawImage(image, 0, 0);
+      const dataURL = canvas.toDataURL('image/jpeg');
+      setBase64Image(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+    };
+  }, []);
 
   return (
     <Layout>
       <NextSeo
-      title='Code with Katy Rosli, a blog about programming and design'
-      description='Frontend Developer | Fullstack Developer | UX/UI Designer'
+      title='Code with Katy Rosli, experienced Frontend Developer | Fullstack Developer'
+      description='Experienced Frontend Developer | Fullstack Developer'
       openGraph={{
         url: 'https://www.codewithkatyrosli.com',
-        title: 'Code with Katy Rosli, a blog about programming and design',
-        description: 'Frontend Developer | Fullstack Developer | UX/UI Designer',
+        title: 'Experienced Frontend Developer | Fullstack Developer',
+        description: 'Experienced Frontend Developer | Fullstack Developer',
         images: [
           {
-          url: `data:image/jpeg;base64,${base64}`,
+          url: `data:image/jpeg;base64,${base64Image}`,
           width: 1224,
           height: 724,
           alt: 'CodeWithKatyRosliBanner',
