@@ -18,8 +18,8 @@ export default function Home() {
         images: [
           {
             url: `${ImageUrl('banner.png')}`,
-            width: 1224,
-            height: 724,
+            width: 400,
+            height: 237,
             alt: 'banner',
             type: 'image/jpeg',
           },

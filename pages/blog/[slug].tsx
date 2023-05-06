@@ -14,7 +14,6 @@ type Props = {
 }
 
 const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
-//console.log ('next/prev blog', prevBlog, nextBlog);
     return (
         <Layout>
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
@@ -24,7 +23,7 @@ const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
             <p className='text-sm mb-16'>
                 {blog.attributes.date}
             </p>
-            <ReactMarkdown className='justify-between' rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+            <ReactMarkdown className='justify-between' /* rehypePlugins={[rehypeRaw, rehypeHighlight]} */>
                 {content}
             </ReactMarkdown>
             </div>

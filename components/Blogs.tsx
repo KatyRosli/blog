@@ -21,12 +21,7 @@ const Blogs = ({ blogs }: Props) => {
                 <p className='text-sm'>{blog.attributes?.date}</p>
                 <p className='text-sm'>{blog.attributes?.description}</p>
                 <Link className='text-violet-700 underline text-sm' href={{
-                  pathname: `blog/` + blog.attributes?.slug,
-                  query: {
-                    slug: blog.attributes?.slug,
-                    nextblog: index < blogsData.length -1,
-                    prevblog: index > 0
-                  }
+                  pathname: `blog/` + blog.attributes?.slug
                 }}>Read More</Link>
                 <hr />
               </div>
