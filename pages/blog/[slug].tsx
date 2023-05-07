@@ -4,7 +4,8 @@ import { fetcher } from '../../lib/api';
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight'
-import Link from 'next/link';
+import { NextSeo } from 'next-seo';
+import { ImageUrl } from '@/utils';
 
 type Props = {
     blog: BlogEntry,
@@ -13,9 +14,33 @@ type Props = {
     nextBlog?: BlogEntry,
 }
 
-const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
+const Blog = ({ blog, content }: Props) => {
     return (
         <Layout>
+            <NextSeo 
+                title={blog.attributes.title}
+                canonical={`blog/` + blog.attributes?.slug}
+                openGraph={{
+                    type: 'article',
+                    article: {
+                        publishedTime: blog.attributes.date,
+                        authors:['Katy Rosli'],
+                        tags: ['JavaScript', 'TypeScript', 'Node.js', 'ReactJs', 'React Native', 'VueJs', 'Angular'],
+                    },
+                    url: 'https://www.codewithkatyrosli.com/',
+                    images: [
+                        {
+                          url: `${ImageUrl('banner.png')}`,
+                          width: 400,
+                          height: 237,
+                          alt: 'banner',
+                          type: 'image/jpeg',
+                        }
+                    ],   
+                    site_name: 'Code With Katy Rosli'
+                }}
+            />
+
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <h3 className="font-bold text-5xl mb-4">
                 {blog.attributes.title}
