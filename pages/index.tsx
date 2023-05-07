@@ -30,7 +30,7 @@ export default function Home() {
       <div className='justify-between mx-auto lg:max-w-7xl md:flex md:px-48 mb-40'>
         <div className='mb-8'>
           <h1 className='font-bold text-5xl'>Hi,<br/>I’m Katy Rosli.</h1>
-          <h2>Frontend Developer, with Backend knowledge.</h2>
+          <h2>Experienced Frontend Developer | Fullstack Developer</h2>
           <p className='text-base'>ReactJS . TypeScript . JavaScript . NextJs . VueJs . CSS . NodeJs . React Native</p>
         </div>
         <div className='flex flex-col'>
