@@ -23,7 +23,7 @@ const Blog = ({ blog, content, prevBlog, nextBlog }: Props) => {
             <p className='text-sm mb-16'>
                 {blog.attributes.date}
             </p>
-            <ReactMarkdown className='justify-between' /* rehypePlugins={[rehypeRaw, rehypeHighlight]} */>
+            <ReactMarkdown className='justify-between'  rehypePlugins={[rehypeRaw, rehypeHighlight]} >
                 {content}
             </ReactMarkdown>
             </div>
