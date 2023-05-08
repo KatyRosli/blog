@@ -32,12 +32,8 @@ const BlogsList = ({ blogs }: Props) => {
               ) || [],
               meta: { pagination: { pageCount: 0 }}
           };
-          //filteredBlogs.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
-          //filteredBlogs.data.reverse();
           setFilteredBlogs(filteredBlogs);
       } else {
-        //data?.data.sort((a: BlogEntry, b: BlogEntry) => Date.parse(a.attributes.date) - Date.parse(b.attributes.date));
-        //data?.data.reverse();
         setFilteredBlogs(data);
       }
   }, [searchValue, data]);
