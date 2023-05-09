@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import "prismjs/themes/prism-tomorrow.css";
 
 p {
     margin-bottom: 16px;
@@ -9,7 +10,7 @@ p {
     font-weight: 300;
 }
 
-pre {
+/* pre {
     border-radius: 8px;
     overflow-x: scroll;
     background-color: #393838;
@@ -20,7 +21,7 @@ code {
     font-size: 12px;
     font-weight: 300;
     color: white;
-}
+} */
 
 h3, h6 {
     margin-bottom: 16px;
