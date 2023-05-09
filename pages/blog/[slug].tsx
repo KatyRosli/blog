@@ -1,6 +1,4 @@
-/* eslint-disable */
 /* eslint-disable react/no-children-prop */
-/* eslint-disable react/prop-types */
 import Layout from '@/components/Layout';
 import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
@@ -24,8 +22,6 @@ import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 type Props = {
     blog: BlogEntry,
     content: string,
-    prevBlog?: BlogEntry,
-    nextBlog?: BlogEntry,
 }
 
 type CodeProps = {
@@ -64,7 +60,6 @@ const Blog = ({ blog, content }: Props) => {
                     site_name: 'Code With Katy Rosli'
                 }}
             />
-
             <div className='mx-auto lg:max-w-7xl md:px-48 mb-16'>
             <h3 className="font-bold text-5xl mb-4">
                 {blog.attributes.title}
@@ -72,27 +67,6 @@ const Blog = ({ blog, content }: Props) => {
             <p className='text-sm mb-16'>
                 {blog.attributes.date}
             </p>
-            {/* <ReactMarkdown components={{
-            code({ inline, className, children, ...props }: CodeProps) {
-              const match = /language-(\w+)/.exec(className || '')
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, '')}
-                  language={'markdown'}
-                />
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              )
-            }}}>{content}</ReactMarkdown>
-            
-            // <SyntaxHighlighter language={'markdown'} style={materialDark}>
-            // {content}
-            // </SyntaxHighlighter> */}
-{/*             <SyntaxHighlighter language='javascript' style={materialDark}>
-                {content}
-            </SyntaxHighlighter> */}
             <ReactMarkdown
           children={content}
           components={{
@@ -128,20 +102,15 @@ type ServerSideProps = {
 
 export async function getServerSideProps({ params }: ServerSideProps) {
     const { slug } = params;
-    //console.log('params', params)
     const blogResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/blog/${slug}`
         );
     const currentBlog = blogResponse.data;
-    const prevBlog = params.prevblog !== undefined ? params.prevblog : null;
-    const nextBlog = params.nextblog !== undefined ? params.nextblog : null;
     const content = currentBlog.attributes.content;
     return {
         props: {
             blog: currentBlog,
             content,
-            prevBlog,
-            nextBlog,
         }
     }
 }
