@@ -17,8 +17,8 @@ export default function App({ Component, pageProps }: AppProps) {
         images: [
           {
             url: `${ImageUrl('banner.png')}`,
-            width: 200,
-            height: 118,
+            width: 100,
+            height: 59,
             alt: 'banner',
             type: 'image/jpeg',
           },
