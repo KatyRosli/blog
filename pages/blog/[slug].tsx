@@ -1,4 +1,6 @@
+/* eslint-disable */
 /* eslint-disable react/no-children-prop */
+/* eslint-disable react/prop-types */
 import Layout from '@/components/Layout';
 import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
@@ -94,13 +96,13 @@ const Blog = ({ blog, content }: Props) => {
             <ReactMarkdown
           children={content}
           components={{
-            code({ node, inline, className, children, ...props }) {
+            code({ node, inline, className, children, style, ...props }) {
               const match = /language-(\w+)/.exec(className || '')
               return !inline && match ? (
                 <SyntaxHighlighter
                   children={String(children).replace(/\n$/, '')}
                   language={match[1]}
-                  style={{ code: { fontFamily: 'inherit' }, ...materialDark }}
+                  style={{ code: { fontFamily: 'inherit' }, ...materialDark } as any as { [key: string]: CSSProperties }}
                   {...props}
                 />
               ) : (
