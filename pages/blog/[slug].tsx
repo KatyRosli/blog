@@ -11,7 +11,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
     materialDark,
     materialLight,
-    oneLight,
+    dracula,
   } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { CSSProperties, ReactElement } from 'react';
 import PrismJsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
@@ -76,7 +76,7 @@ const Blog = ({ blog, content }: Props) => {
                 <SyntaxHighlighter
                   children={String(children).replace(/\n$/, '')}
                   language={match[1]}
-                  style={{ code: { fontFamily: 'inherit' }, ...materialDark } as any as { [key: string]: CSSProperties }}
+                  style={{ code: { fontFamily: 'inherit', fontSize: '8px' }, ...dracula } as any as { [key: string]: CSSProperties }}
                   {...props}
                 />
               ) : (
