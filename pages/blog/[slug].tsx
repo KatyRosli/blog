@@ -3,8 +3,6 @@ import Layout from '@/components/Layout';
 import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
 import ReactMarkdown from "react-markdown";
-import rehypeRaw from 'rehype-raw';
-import rehypeHighlight from 'rehype-highlight'
 import { NextSeo } from 'next-seo';
 import { ImageUrl } from '@/utils';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -13,22 +11,13 @@ import {
     materialLight,
     dracula,
   } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { CSSProperties, ReactElement } from 'react';
-import PrismJsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
+import { CSSProperties } from 'react';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
-
 
 type Props = {
     blog: BlogEntry,
     content: string,
-}
-
-type CodeProps = {
-    node: ReactElement,
-    inline: boolean,
-    className: string,
-    children: ReactElement[]
 }
 
 const Blog = ({ blog, content }: Props) => {
