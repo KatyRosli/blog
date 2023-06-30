@@ -19,12 +19,12 @@ export default function About() {
         <p className='text-base mb-16'>Over the years, I have worked for large organisations to start ups. 
         To name some, I’ve worked for Klarna, Braive, Hero Gaming, Asia Genomics and Sonoport. 
         I am currently employed as a Frontend Developer in Stockholm, Sweden. 
-        My work involves creating intutive and visually appealing user interfaces (UX and UI design) for web applications.
+        My work involves creating intuitive and visually appealing user interfaces (UX and UI design) for web applications.
         All of my current and past experiences can be seen <Link className='text-violet-700 underline' href='https://www.linkedin.com/in/katy-rosli-761b70185/'> here </Link> on my LinkedIn.</p>
         <h3>Skills and Expertise</h3>
-        <p className='text-base'>Languages: TypeScript, JavaScript, HTML, CSS, SCSS.</p>
-        <p className='text-base'>Frontend: React Js, Next Js, Redux, React Native, Vue Js, Angular, jQuery, Bootstrap, Tailwind.</p>
-        <p className='text-base'>Backend: NodeJs, ExpressJs, Axios, Nodemon, REST, GraphQL, MongoDB, PostgresSQL, Strapi.</p>
+        <p className='text-base'>Languages: TypeScript, JavaScript.</p>
+        <p className='text-base'>Frontend: React Js, Next Js, Redux, React Native, Vue Js, Angular, jQuery, Bootstrap, Tailwind, Vuetify, Storybook.</p>
+        <p className='text-base'>Backend: NodeJs, ExpressJs, Axios, Nodemon, REST, GraphQL, MongoDB, PostgresSQL, Strapi, Sanity.</p>
         <p className='text-base mb-16'>Test: Mocha, Jest, Jasmine, Karma.</p>
         </div>
       </div>
