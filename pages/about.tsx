@@ -13,10 +13,8 @@ export default function About() {
         like in Glasgow (Scotland), Toronto (Canada), Malmö (Sweden) and now in Stockholm with my 
         husband and my son.</p>
         <h3>Education</h3>
-        <p className='text-base mb-16'>I have a BA Hons in Communication Design from The Glasgow School of Art. I have over
-        7 years of working experience as a UX/UI Designer. I’m currently working as a Frontend 
-        Developer after completing a FullStack JavaScript Developer a career program from SALT 
-        (School of Applied Technology).</p>
+        <p className='text-base mb-16'>I have a BA Hons in Communication Design from The Glasgow School of Art. I graduated back in 2014. 
+        I am currently working is a Frontend Developer.</p>
         <h3>Experiences</h3>
         <p className='text-base mb-16'>Over the years, I have worked for large organisations to start ups. 
         To name some, I’ve worked for Klarna, Braive, Hero Gaming, Asia Genomics and Sonoport. 
