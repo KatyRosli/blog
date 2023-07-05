@@ -5,11 +5,16 @@ import { DefaultSeo } from 'next-seo';
 import { ImageUrl } from '@/utils';
 import Script from 'next/script';
 import { GA_TRACKING_ID, pageview } from '../gtag';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import CookieBanner from '@/components/CookieBanner';
+import Layout from '@/components/Layout';
+import ReactGA from 'react-ga';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const COOKIE_CONSENT_KEY = 'cookieConsent';
+  const [cookieConsent, setCookieConsent] = useState(false);
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -22,6 +27,13 @@ export default function App({ Component, pageProps }: AppProps) {
     router.events.off('routeChangeComplete', handleRouteChange);
   };
 }, [router.events]);
+
+  useEffect(() => {
+    if(cookieConsent) {
+      localStorage.setItem(COOKIE_CONSENT_KEY, 'true');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+  }, [cookieConsent]);
   return (
     <>
     <DefaultSeo 
@@ -44,6 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }} />
     <ThemeProvider attribute='class'>
       <Component {...pageProps} />
+      {!cookieConsent && <CookieBanner />}
     </ThemeProvider>
     <Script
         strategy="afterInteractive"
