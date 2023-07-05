@@ -4,6 +4,7 @@ import Summary from '@/components/Summary';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { ImageUrl } from '@/utils';
+import { event } from '../gtag';
 
 export default function Home() {
   return (
@@ -34,8 +35,26 @@ export default function Home() {
           <p className='text-base'>ReactJS . TypeScript . JavaScript . NextJs . VueJs . CSS . NodeJs . React Native</p>
         </div>
         <div className='flex flex-col'>
-          <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'><button className="bg-violet-700 hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full mb-8">View Portfolio</button></a>
-          <Link href='/blog'><button className="border-2 border-violet-700 hover:bg-violet-900 hover:text-white text-violet-700 font-bold py-2 px-4 rounded-full">Read the Blog</button></Link>
+          <a target='_blank' href='https://www.katyrosli.com/#portfolio' rel='noopener noreferrer'>
+            <button 
+              className="bg-violet-700 hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full mb-8"
+              onClick={() => 
+              event({
+                action: 'portfolio_button_click',
+                category: 'Home Page',
+                label:'View Portfolio Button',
+              })
+            }>View Portfolio</button></a>
+          <Link href='/blog'>
+            <button 
+              className="border-2 border-violet-700 hover:bg-violet-900 hover:text-white text-violet-700 font-bold py-2 px-4 rounded-full"
+              onClick={() =>
+              event({
+                action: 'bloh_button_click',
+                category: 'Home Page',
+                label: 'Read the Blog Button',
+              })
+            }>Read the Blog</button></Link>
         </div>
       </div>
       <div className='justify-between mx-auto lg:max-w-7xl md:flex md:px-48 mb-40'>
