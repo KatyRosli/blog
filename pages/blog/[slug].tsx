@@ -1,4 +1,5 @@
 /* eslint-disable react/no-children-prop */
+import { CSSProperties, useState } from 'react';
 import Layout from '@/components/Layout';
 import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
@@ -11,9 +12,9 @@ import {
     materialLight,
     dracula,
   } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { CSSProperties } from 'react';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 type Props = {
     blog: BlogEntry,
@@ -23,6 +24,15 @@ type Props = {
 const Blog = ({ blog, content }: Props) => {
     SyntaxHighlighter.registerLanguage('jsx', jsx);
     SyntaxHighlighter.registerLanguage('markdown', markdown);
+
+    const [copied, setCopied] = useState(false);
+
+    const handleCodeCopy = () => {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    };
 
     return (
         <Layout>
@@ -61,16 +71,21 @@ const Blog = ({ blog, content }: Props) => {
           components={{
             code({ node, inline, className, children, style, ...props }) {
               const match = /language-(\w+)/.exec(className || '')
+              const code = String(children).replace(/\n$/, '');
               return !inline && match ? (
                 <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, '')}
+                  children={code}
                   language={match[1]}
-                  style={{ code: { fontFamily: 'inherit', fontSize: '8px' }, ...dracula } as any as { [key: string]: CSSProperties }}
+                  style={{ code: { fontFamily: 'inherit', fontSize: '12px' }, ...dracula } as any as { [key: string]: CSSProperties }}
                   {...props}
                 />
               ) : (
-                <code className={className} {...props}>
-                  {children}
+                <code className={className + 'code-font'} {...props}>
+                  <CopyToClipboard text={code as string} onCopy={handleCodeCopy}>
+                    <button className="copy-button">
+                      {copied ? 'Copied!' : 'Copy'}
+                    </button>
+                  </CopyToClipboard>
                 </code>
               )
             },
