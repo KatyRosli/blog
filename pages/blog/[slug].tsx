@@ -84,7 +84,7 @@ const Blog = ({ blog, content }: Props) => {
                     {...props}
                   />
                   {copied ? (
-                        <span className='text-gray-600 text-xs absolute top-0 right-0 mt-1 mr-1'>Copied!</span>
+                        <span className='text-gray-400 text-xs absolute top-0 right-0 mt-1 mr-1'>Copied!</span>
                       ) : (
                         <button className="absolute top-2 right-2 p-2 text-sm bg-gray-600 rounded-md focus:outline-none" onClick={() => handleCodeCopy(code)}>
                           <BsFillClipboardFill />
