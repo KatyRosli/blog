@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { event } from '../gtag';
 
 const Search = (props: { setSearchValue: (arg0: string) => void; value: string | number | readonly string[] | undefined;}) => {
   const [searchValue, setSearchValue] = useState('');
@@ -45,4 +46,3 @@ const Search = (props: { setSearchValue: (arg0: string) => void; value: string |
 };
 
 export default Search;
-
