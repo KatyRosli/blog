@@ -1,5 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import { CSSProperties, useState } from 'react';
+import { BsFillClipboardFill } from 'react-icons/bs';
 import Layout from '@/components/Layout';
 import { BlogEntry } from '../../lib/types';
 import { fetcher } from '../../lib/api';
@@ -27,7 +28,8 @@ const Blog = ({ blog, content }: Props) => {
 
     const [copied, setCopied] = useState(false);
 
-    const handleCodeCopy = () => {
+    const handleCodeCopy = (code: string) => {
+      navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => {
         setCopied(false);
@@ -67,33 +69,39 @@ const Blog = ({ blog, content }: Props) => {
                 {blog.attributes.date}
             </p>
             <ReactMarkdown
-          children={content}
-          components={{
-            code({ node, inline, className, children, style, ...props }) {
-              const match = /language-(\w+)/.exec(className || '')
-              const code = String(children).replace(/\n$/, '');
+            children={content}
+            components={{
+              code({ node, inline, className, children, style, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                const code = String(children).replace(/\n$/, '');
+
               return !inline && match ? (
-                <SyntaxHighlighter
-                  children={code}
-                  language={match[1]}
-                  style={{ code: { fontFamily: 'inherit', fontSize: '12px' }, ...dracula } as any as { [key: string]: CSSProperties }}
-                  {...props}
-                />
+                <div className="relative code-container">
+                  <SyntaxHighlighter
+                    children={code}
+                    language={match[1]}
+                    style={{ code: { fontFamily: 'inherit', fontSize: '12px' }, ...dracula } as any as { [key: string]: CSSProperties }}
+                    {...props}
+                  />
+                  {copied ? (
+                        <span className='text-gray-600 text-xs absolute top-0 right-0 mt-1 mr-1'>Copied!</span>
+                      ) : (
+                        <button className="absolute top-2 right-2 p-2 text-sm bg-gray-600 rounded-md focus:outline-none" onClick={() => handleCodeCopy(code)}>
+                          <BsFillClipboardFill />
+                        </button>
+                      )}
+              </div>
               ) : (
-                <code className={className + 'code-font'} {...props}>
-                  <CopyToClipboard text={code as string} onCopy={handleCodeCopy}>
-                    <button className="copy-button">
-                      {copied ? 'Copied!' : 'Copy'}
-                    </button>
-                  </CopyToClipboard>
-                </code>
+                  <code className={className + ' code-font'} {...props}>
+                        {copied ? 'Copied!' : 'Copy'}
+                  </code>
               )
             },
           }}
         /> 
-            </div>
-        </Layout>
-    )
+      </div>
+    </Layout>
+  )
 }
 
 type ServerSideProps = {
