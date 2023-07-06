@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { useEffect, useState } from 'react';
 import { BlogDataResponse, BlogEntry } from '../lib/types';
 import Link from 'next/link';
+import { event } from '../gtag';
 
 type Props = {
     blogs: BlogDataResponse
@@ -87,9 +88,15 @@ const BlogsList = ({ blogs }: Props) => {
                             currentPageIndex === 1 ? 'bg-gray-300' : 'bg-violet-700 text-white'
                         }`}
                         disabled={currentPageIndex === 1}
-                        onClick={() => setCurrentPageIndex(currentPageIndex - 1)}
+                        onClick={() =>  {
+                            setCurrentPageIndex(currentPageIndex - 1);
+                            event({
+                                action: 'previous_button_click',
+                                category: 'Blog Page',
+                                label: 'Previous Button',
+                            });
+                        }}
                     >
-                        {' '}
                         Previous
                     </button>
                     <span className='mx-3.5'>{`${currentPageIndex} of ${
@@ -102,7 +109,14 @@ const BlogsList = ({ blogs }: Props) => {
                                 : 'bg-violet-700 text-white'
                         }`}
                         disabled={currentPageIndex === (data && data.meta && data.meta.pagination && data.meta?.pagination?.pageCount)}
-                        onClick={() => setCurrentPageIndex(currentPageIndex + 1)}
+                        onClick={() => {
+                            setCurrentPageIndex(currentPageIndex + 1);
+                            event({
+                                action: 'next_button_click',
+                                category: 'Blog Page',
+                                label: 'Next Button',
+                            });
+                        }}
                     >
                         Next
                     </button>

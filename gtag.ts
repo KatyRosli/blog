@@ -3,8 +3,8 @@ export const GA_TRACKING_ID: string = "G-99QL5K6V63";
 export const pageview = (url: string): void => {
   (window as any).gtag("config", GA_TRACKING_ID, {
     page_path: url,
-  })
-}
+  });
+};
 
 
 export const event = ({ action, category, label, value }: {
@@ -18,4 +18,4 @@ export const event = ({ action, category, label, value }: {
     event_label: label,
     value: value,
   });
-}
+};

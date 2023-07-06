@@ -3,17 +3,27 @@ import { useState } from "react";
 const Search = (props: { setSearchValue: (arg0: string) => void; value: string | number | readonly string[] | undefined;}) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const onKeyUpHandler = (event: { key: string; }) => {
+  const onKeyUpHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (searchValue.length === 0) {
       props.setSearchValue('');
     }
   }
 
-  const onEnterKeyDownHandler = (event: { key: string; }) => {
+  const onEnterKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && searchValue && searchValue.length > 0) {
       props.setSearchValue(searchValue);
+      trackSearchQuery(searchValue);
     }
   }
+
+  const trackSearchQuery = (query: string) => {
+    if (window.gtag) {
+      window.gtag('event', 'search_query', {
+        event_category: 'Search',
+        event_label: query,
+      });
+    }
+  };
 
   return (
     <div className='flex justify-start'>

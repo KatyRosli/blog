@@ -8,7 +8,6 @@ import { GA_TRACKING_ID, pageview } from '../gtag';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import CookieBanner from '@/components/CookieBanner';
-import Layout from '@/components/Layout';
 import ReactGA from 'react-ga';
 
 export default function App({ Component, pageProps }: AppProps) {
