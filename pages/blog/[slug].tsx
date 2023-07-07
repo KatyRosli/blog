@@ -15,7 +15,7 @@ import {
   } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { event } from '../../gtag';
 
 type Props = {
     blog: BlogEntry,
@@ -35,6 +35,15 @@ const Blog = ({ blog, content }: Props) => {
         setCopied(false);
       }, 2000);
     };
+
+    const handleCopyButtonClick = (code: string) => {
+      handleCodeCopy(code);
+      event({
+        action: 'copy_button_click',
+        category: 'Blog Post Page',
+        label: 'Copy Code Button',
+      });
+    }
 
     return (
         <Layout>
@@ -86,7 +95,7 @@ const Blog = ({ blog, content }: Props) => {
                   {copied ? (
                         <span className='text-gray-400 text-xs absolute top-0 right-0 mt-1 mr-1'>Copied!</span>
                       ) : (
-                        <button className="absolute top-2 right-2 p-2 text-sm bg-gray-600 rounded-md focus:outline-none" onClick={() => handleCodeCopy(code)}>
+                        <button className="absolute top-2 right-2 p-2 text-sm bg-gray-600 rounded-md focus:outline-none" onClick={() => handleCopyButtonClick(code)}>
                           <BsFillClipboardFill />
                         </button>
                       )}
