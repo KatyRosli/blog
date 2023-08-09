@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CookieBanner: React.FC = () => {
     const [accepted, setAccepted] = useState(false);
@@ -7,7 +7,20 @@ const CookieBanner: React.FC = () => {
         setAccepted(true);
     };
 
-    if (accepted) {
+    useEffect(() => {
+        const isAccepted = localStorage.getItem('cookieAccepted');
+        if(isAccepted) {
+            setAccepted(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        if(accepted) {
+            localStorage.setItem('cookieAccepted', 'true');
+        }
+    }, [accepted]);
+        
+        if (accepted) {
         return null;
     }
     return (
